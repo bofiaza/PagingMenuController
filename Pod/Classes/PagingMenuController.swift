@@ -52,7 +52,7 @@ open class PagingMenuController: UIViewController {
         }
     }
     
-    open public var movePageOnMenuMoveEnd = true
+    open var movePageOnMenuMoveEnd = true
     
     fileprivate var options: PagingMenuControllerCustomizable! {
         didSet {
