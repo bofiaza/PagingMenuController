@@ -52,6 +52,8 @@ open class PagingMenuController: UIViewController {
         }
     }
     
+    public var movePageOnMenuMoveEnd = true
+    
     fileprivate var options: PagingMenuControllerCustomizable! {
         didSet {
             cleanup()
@@ -323,7 +325,9 @@ extension PagingMenuController: UIScrollViewDelegate {
         default: return
         }
         
-        move(toPage: nextPage)
+        if movePageOnMenuMoveEnd {
+            move(toPage: nextPage)
+        }
     }
 
     public func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -336,8 +340,10 @@ extension PagingMenuController: UIScrollViewDelegate {
         default: return
         }
         
-        let nextPage = nextPageFromCurrentPoint
-        move(toPage: nextPage)
+        if movePageOnMenuMoveEnd {
+            let nextPage = nextPageFromCurrentPoint
+            move(toPage: nextPage)
+        }
     }
 }
 
